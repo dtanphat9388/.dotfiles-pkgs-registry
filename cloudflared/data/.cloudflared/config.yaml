@@ -1,0 +1,7 @@
+tunnel: 2f24fb42-bb62-41c3-b2fd-cecb94d1201f
+credentials-file: /home/dtanphat9388/.cloudflared/2f24fb42-bb62-41c3-b2fd-cecb94d1201f.json
+
+ingress:
+  - hostname: tunnel.ilotusland.asia
+    service: http://localhost:8000
+  - service: http_status:404

@@ -1,0 +1,7 @@
+---
+syntax: bash
+tags: [ db, database, mongo ]
+---
+
+# restore data base
+mongorestore -h <HOST> -u <USER> -p <PASS>

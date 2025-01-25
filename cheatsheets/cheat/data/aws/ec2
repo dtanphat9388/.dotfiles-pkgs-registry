@@ -1,0 +1,7 @@
+---
+syntax: bash
+tags: [ aws, ec2 ]
+---
+
+# get public IP by instance id
+aws ec2 describe-instances --instance-ids <instanceID> --query 'Reservations[*]. Instances[*]. PublicIpAddress' --output text

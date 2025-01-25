@@ -1,0 +1,55 @@
+#!/bin/bash
+
+__home=$(dirname $0)
+__profile_dir="$DF_HOME"
+
+action=$1
+
+hook_info() {
+  echo password manager in CLI
+  echo docs: https://www.passwordstore.org/
+}
+
+hook_check() {
+  command -v pass
+}
+
+hook_install() {
+  installFile=$__home/install.sh
+  [[ -f $installFile ]] && bash "$installFile" "$__home"
+}
+
+hook_uninstall() {
+  uninstallFile=$__home/uninstall.sh
+  [[ -f $uninstallFile ]] && bash "$uninstallFile" "$__home"
+}
+
+hook_link() {
+  lnFile=$__home/ln.sh
+  [[ -f $lnFile ]] && bash "$lnFile" "$__home"
+}
+
+hook_env() {
+  envFile=$__home/env.zsh
+  [[ -f $envFile ]] && source "$envFile" "$__home" "$__profile_dir"
+}
+
+hook_zsh() {
+  source "$__home/.zsh/functions.zsh" "$__home" "$__profile_dir"
+}
+
+if [[ $action == "check" ]]; then
+  hook_check
+elif [[ $action == "install" ]]; then
+  hook_install
+elif [[ $action == "uninstall" ]]; then
+  hook_uninstall
+elif [[ $action == "link" ]]; then
+  hook_link
+elif [[ $action == "env" ]]; then
+  hook_env
+elif [[ $action == "zsh" ]]; then
+  hook_zsh
+elif [[ $action == "info" ]]; then
+  hook_info
+fi
