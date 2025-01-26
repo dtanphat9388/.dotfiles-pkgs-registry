@@ -13,7 +13,7 @@ hook_check() {
 }
 
 hook_dependencies() {
-  echo "asdf"
+  echo asdf
 }
 
 hook_install() {

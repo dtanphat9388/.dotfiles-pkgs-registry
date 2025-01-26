@@ -1,0 +1,34 @@
+# Alacritty Configuration (TOML)
+# generate by ChatGPT: https://chatgpt.com/share/e1e78d5c-18a0-4736-b694-cfd4f2977a62
+[colors.primary]
+background = "#1B2027"   # Primary Background
+foreground = "#EBEBF5"   # Primary Text
+
+[colors.normal]
+black = "#1B2027"        # Black
+red = "#F8C0BA"          # System Red
+green = "#81DF99"        # System Green
+yellow = "#F7CE46"       # System Yellow
+blue = "#A3D0FF"         # System Blue
+magenta = "#E1BFF3"      # System Purple
+cyan = "#83D5FB"         # System Teal
+white = "#EBEBF5"        # Primary Text (Foreground)
+
+#[colors.bright]
+#black = "#3A3A3C"        # Black
+#red = "#FF453A"          # Bright Red (Slightly brighter than System Red)
+#green = "#30D158"        # Bright Green (Slightly brighter than System Green)
+#yellow = "#FFD60A"       # Bright Yellow (Slightly brighter than System Yellow)
+#blue = "#0A84FF"         # Bright Blue (Slightly brighter than System Blue)
+#magenta = "#BF5AF2"      # Bright Magenta (Slightly brighter than System Purple)
+#cyan = "#64D2FF"         # Bright Cyan (Slightly brighter than System Teal)
+#white = "#F2F2F7"        # Bright White (Light Gray)
+
+[colors.cursor]
+text = "#1C1C1E"         # Text Color within the cursor
+cursor = "#F2F2F7"       # Cursor Color
+
+[colors.selection]
+text = "#1C1C1E"         # Selected Text
+background = "#5AC8FA"   # Selection Background (System Teal)
+

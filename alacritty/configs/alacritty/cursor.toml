@@ -1,0 +1,13 @@
+[cursor.style]
+blinking = "Always"
+shape = "Block"
+
+[mouse]
+hide_when_typing = false
+
+[scrolling]
+history = 10000
+multiplier = 10
+
+[selection]
+save_to_clipboard = true

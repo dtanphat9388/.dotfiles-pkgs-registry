@@ -1,0 +1,17 @@
+live_config_reload = true
+
+import = [
+  "~/.config/alacritty/colors-apple-chatgpt.toml",
+  # "~/.config/alacritty/colors-ayu.toml",
+  # "~/.config/alacritty/colors-me.toml",
+  "~/.config/alacritty/cursor.toml",
+  "~/.config/alacritty/env.toml",
+  "~/.config/alacritty/font.toml",
+  "~/.config/alacritty/key-bindings.toml",
+  "~/.config/alacritty/window.toml"
+]
+
+[shell]
+program = "zsh"
+args = ["-l", "-c", "tmux attach -t ${TMUX_DEFAULT_SESSION_NAME} || tmux -f ${TMUX_CONFIG} new-session -s ${TMUX_DEFAULT_SESSION_NAME} -n ${TMUX_DEFAULT_WINDOW_NAME} -c ${HOME}/me" ]
+

@@ -10,14 +10,21 @@ hook_check() {
 
 hook_dependencies() {
   if [[ $DF_IS_MACOS ]]; then
-    echo "brew"
+    echo brew
   fi
+  echo tmux
 }
 
 hook_install() {
   installFile=$__dirname/install.sh
   [[ -f $installFile ]] && bash "$installFile" "$__dirname"
   hook_link
+}
+
+hook_generate_configs() {
+  if [[ ! -d "$DF_CONFIGS/alacritty" ]]; then
+    cp -r $__dirname/configs/alacritty $DF_CONFIGS
+  fi
 }
 
 hook_uninstall() {
