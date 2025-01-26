@@ -1,7 +1,6 @@
 #!/bin/bash
-#shellcheck source=/dev/null
 
-__home=$(dirname "$0")
+__dirname=$(dirname "$0")
 
 action=$1
 
@@ -10,34 +9,37 @@ hook_check() {
 }
 
 hook_dependencies() {
-  echo "brew"
+  if [[ $DF_IS_MACOS ]]; then
+    echo "brew"
+  fi
 }
 
 hook_install() {
-  installFile=$__home/install.sh
-  [[ -f $installFile ]] && bash "$installFile" "$__home"
+  installFile=$__dirname/install.sh
+  [[ -f $installFile ]] && bash "$installFile" "$__dirname"
+  hook_link
 }
 
 hook_uninstall() {
-  uninstallFile=$__home/uninstall.sh
-  [[ -f $uninstallFile ]] && bash "$uninstallFile" "$__home"
+  uninstallFile=$__dirname/uninstall.sh
+  [[ -f $uninstallFile ]] && bash "$uninstallFile" "$__dirname"
 }
 
 hook_link() {
-  lnFile=$__home/ln.sh
-  [[ -f $lnFile ]] && bash "$lnFile" "$__home"
+  lnFile=$__dirname/ln.sh
+  [[ -f $lnFile ]] && bash "$lnFile" "$__dirname"
 }
 
 hook_env() {
-  envFile=$__home/env.zsh
+  envFile=$__dirname/env.zsh
   [[ -f $envFile ]] && source "$envFile"
 }
 
 hook_zsh() {
   return # remove return if have zsh files
   # note: place by order
-  # source "$__home/.zsh/aliases.zsh"
-  # source "$__home/.zsh/functions.zsh"
+  # source "$__dirname/.zsh/aliases.zsh"
+  # source "$__dirname/.zsh/functions.zsh"
 }
 
 if [[ $action == "check" ]]; then
