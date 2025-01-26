@@ -14,4 +14,4 @@ FZF_DEFAULT_OPTS+=" $FZF_DEFAULT_THEME $FZF_DEFAULT_KEYS $FZF_DEFAULT_BEHAVIOR"
 export FZF_DEFAULT_OPTS
 
 # used by fzf as web server
-export FZF_API_KEY="abcxyz"
+# export FZF_API_KEY="abcxyz"

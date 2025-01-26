@@ -1,15 +1,6 @@
 #!/bin/bash
 
-app_brew() {
-  return
-}
-
-app_apt() {
-  return
-}
-
-if [[ $DF_IS_HOMEBREW ]]; then
-  app_brew
-elif [[ $DF_IS_APT ]]; then
-  app_apt
+brew install --cask karabiner-elements
+if [[ ! -d $DF_CONFIGS/karabiner ]]; then
+  cp -r $DF_PACKAGES/karabiner/configs/karabiner $DF_CONFIGS
 fi

@@ -1,15 +1,4 @@
 #!/bin/bash
 
-app_brew() {
-  brew install himalaya
-}
-
-app_apt() {
-  echo "not available"
-}
-
-if [[ $DF_IS_HOMEBREW ]]; then
-  app_brew
-elif [[ $DF_IS_APT ]]; then
-  app_apt
-fi
+brew install himalaya
+himalaya completion zsh >$ZSH_COMPLETIONS_DIR/_himalaya && source $ZSH_COMPLETIONS_DIR/_himalaya
