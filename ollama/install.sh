@@ -1,19 +1,8 @@
 #!/bin/bash
 
-app_brew() {
-  brew install ollama
-}
-
-app_apt() {
-  curl -fsSL https://ollama.com/install.sh | sh
-}
-
-if [[ $DF_IS_MACOS ]]; then
-  app_brew
-elif [[ $DF_IS_LINUX ]]; then
-  app_apt
-fi
+brew install ollama
 
 # install models
-ollama pull llama3:70b
-ollama pull codellama:70b
+# ollama pull llama3:70b
+# ollama pull codellama:70b
+# ollama pull deepseek-r1:1.5b
