@@ -7,3 +7,5 @@
 
 # apple intel
 [[ $DF_IS_MACOS ]] && export PATH="$PATH:/usr/local"
+
+[[ -f "$DF_CONFIGS/brew/env.zsh" ]] && source "$DF_CONFIGS/brew/env.zsh"
