@@ -1,6 +1,8 @@
 #!/bin/bash
 
-__dirname=$1
-__data=$2
+export SQ_CONFIG=$DF_CONFIGS/sq/config
+if [[ ! -f "$SQ_CONFIG" ]]; then
+  touch "$SQ_CONFIG"
+fi
 
-# export key=value
+[[ -f "$DF_CONFIGS/sq/env.zsh" ]] && source "$DF_CONFIGS/sq/env.zsh"
