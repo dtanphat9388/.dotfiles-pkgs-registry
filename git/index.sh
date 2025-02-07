@@ -10,7 +10,8 @@ hook_info() {
 }
 
 hook_dependencies() {
-  echo brew
+  echo brew # used in install
+  echo pass # used in git credential
 }
 
 hook_check() {
