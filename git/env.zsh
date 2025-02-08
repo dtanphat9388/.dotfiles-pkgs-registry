@@ -1,3 +1,5 @@
 #!/bin/bash
 
-[[ -f "$DF_CONFIGS/git/env.zsh" ]] && source "$DF_CONFIGS/git/env.zsh"
+if [[ -f "$DF_CONFIGS/git/env.zsh" ]]; then
+  source "$DF_CONFIGS/git/env.zsh"
+fi

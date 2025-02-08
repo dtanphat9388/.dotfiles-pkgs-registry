@@ -4,4 +4,10 @@ __home=$1
 
 export STARSHIP_CONFIG=$(echo $DF_CONFIGS/starship/starship.toml)
 
-[[ -f "$DF_CONFIGS/starship/env.zsh" ]] && source "$DF_CONFIGS/starship/env.zsh"
+if [[ -f "$DF_CONFIGS/starship/env.zsh" ]]; then
+  source "$DF_CONFIGS/starship/env.zsh"
+fi
+
+if [[ -f "$DF_HOME/starship/env.zsh" ]]; then
+  source "$DF_HOME/starship/env.zsh"
+fi

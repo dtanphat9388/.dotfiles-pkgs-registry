@@ -8,4 +8,10 @@
 # apple intel
 [[ $DF_IS_MACOS ]] && export PATH="$PATH:/usr/local"
 
-[[ -f "$DF_CONFIGS/brew/env.zsh" ]] && source "$DF_CONFIGS/brew/env.zsh"
+if [[ -f "$DF_CONFIGS/brew/env.zsh" ]]; then
+  source "$DF_CONFIGS/brew/env.zsh"
+fi
+
+if [[ -f "$DF_HOME/brew/env.zsh" ]]; then
+  source "$DF_HOME/brew/env.zsh"
+fi

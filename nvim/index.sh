@@ -1,4 +1,5 @@
 #!/bin/bash
+#shellcheck source=/dev/null
 
 __dirname=$(dirname "$0")
 __home="$DF_HOME"
@@ -20,7 +21,6 @@ hook_dependencies() {
 hook_install() {
   installFile=$__dirname/install.sh
   [[ -f $installFile ]] && bash "$installFile" "$__dirname"
-  hook_link
 }
 
 hook_uninstall() {

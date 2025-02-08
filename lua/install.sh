@@ -1,1 +1,5 @@
-curl https://raw.githubusercontent.com/DhavalKapil/luaver/master/install.sh -o /tmp/install.sh && . /tmp/install.sh
+#!/bin/bash
+
+asdf plugin add lua
+asdf install lua latest
+asdf global lua latest

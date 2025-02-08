@@ -9,4 +9,6 @@ else
   export PATH="$HOME/.local/share/fnm:$PATH"
 fi
 
-[[ -f "$DF_CONFIGS/fnm/env.zsh" ]] && source "$DF_CONFIGS/fnm/env.zsh"
+if [[ -f "$DF_CONFIGS/fnm/env.zsh" ]]; then
+  source "$DF_CONFIGS/fnm/env.zsh"
+fi

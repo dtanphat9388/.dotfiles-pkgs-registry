@@ -8,4 +8,6 @@ elif [[ $DF_IS_TERM_TMUX ]]; then
   export KUBE_EDITOR='nvim'
 fi
 
-[[ -f "$DF_CONFIGS/kubectl/env.zsh" ]] && source "$DF_CONFIGS/kubectl/env.zsh"
+if [[ -f "$DF_CONFIGS/kubectl/env.zsh" ]]; then
+  source "$DF_CONFIGS/kubectl/env.zsh"
+fi

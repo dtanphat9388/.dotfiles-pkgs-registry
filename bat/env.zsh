@@ -1,3 +1,5 @@
 #!/bin/bash
 
-[[ -f "$DF_CONFIGS/bat/env.zsh" ]] && source "$DF_CONFIGS/bat/env.zsh"
+if [[ -f "$DF_CONFIGS/bat/env.zsh" ]]; then
+  source "$DF_CONFIGS/bat/env.zsh"
+fi
