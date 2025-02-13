@@ -10,16 +10,6 @@ hook_info() {
   echo your description here
 }
 
-hook_dependencies() {
-  #   # style more
-  #   declare -a deps=("brew" "npm")
-  #   echo ${deps[@]}
-  #   # style little
-  #   echo "dep1"
-  #   echo "dep2"
-  return
-}
-
 # status code:
 # 0: success
 # 1: error
@@ -61,19 +51,6 @@ hook_link() {
 hook_env() {
   envFile=$__dirname/env.zsh
   [[ -f $envFile ]] && source "$envFile" "$__dirname" "$__home"
-}
-
-hook_zsh() {
-  [[ -f "$__dirname/.zsh/aliases.zsh" ]] && source "$__dirname/.zsh/aliases.zsh" "$__dirname" "$__home"
-  [[ -f "$__dirname/.zsh/functions.zsh" ]] && source "$__dirname/.zsh/functions.zsh" "$__dirname" "$__home"
-  # -- note: place by order
-  # YOUR_COMMAND() {
-  #   unset -f $0
-  #   # $0 completion zsh (if have)
-  #   [[ -f "$__dirname/.zsh/aliases.zsh" ]] && source "$__dirname/.zsh/aliases.zsh" "$__dirname" "$__home"
-  #   [[ -f "$__dirname/.zsh/functions.zsh" ]] && source "$__dirname/.zsh/functions.zsh" "$__dirname" "$__home"
-  #   $0 "$@"
-  # }
 }
 
 if [[ -n $action ]]; then
