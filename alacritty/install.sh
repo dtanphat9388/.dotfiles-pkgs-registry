@@ -1,20 +1,16 @@
 #!/bin/bash
 
-alacritty_brew() {
-  brew install --cask --no-quarantine alacritty
-}
+__dirname=$(dirname "$0")
 
-alacritty_apt() {
+if [[ $DF_IS_MACOS ]]; then
+  brew install --cask --no-quarantine alacritty
+elif [[ $DF_IS_LINUX ]]; then
   sudo add-apt-repository ppa:aslatter/ppa
   sudo apt update -y
   sudo apt install -y alacritty
   #-- set alacrity as default terminal
   sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/alacritty 50
-  sudo update-alternatives --config x-terminal-emulator
-}
-
-if [[ $DF_IS_MACOS ]]; then
-  alacritty_brew
-elif [[ $DF_IS_APT ]]; then
-  alacritty_apt
+  sudo update-alternatives --set x-terminal-emulator
 fi
+
+. "$__dirname/ln.sh"

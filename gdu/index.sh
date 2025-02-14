@@ -50,14 +50,6 @@ hook_env() {
 hook_zsh() {
   [[ -f "$__dirname/.zsh/aliases.zsh" ]] && source "$__dirname/.zsh/aliases.zsh" "$__dirname" "$__home"
   [[ -f "$__dirname/.zsh/functions.zsh" ]] && source "$__dirname/.zsh/functions.zsh" "$__dirname" "$__home"
-  # -- note: place by order
-  # YOUR_COMMAND() {
-  #   unset -f $0
-  #   # $0 completion zsh (if have)
-  #   [[ -f "$__dirname/.zsh/aliases.zsh" ]] && source "$__dirname/.zsh/aliases.zsh" "$__dirname" "$__home"
-  #   [[ -f "$__dirname/.zsh/functions.zsh" ]] && source "$__dirname/.zsh/functions.zsh" "$__dirname" "$__home"
-  #   $0 "$@"
-  # }
 }
 
 if [[ -n $action ]]; then

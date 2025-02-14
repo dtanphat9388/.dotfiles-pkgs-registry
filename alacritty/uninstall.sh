@@ -1,15 +1,7 @@
 #!/bin/bash
 
-alacritty_brew_uninstall() {
-  return
-}
-
-alacritty_apt_uninstall() {
+if [[ $DF_IS_MACOS ]]; then
+  brew uninstall --cask alacritty
+elif [[ $DF_IS_LINUX ]]; then
   sudo apt autoremove --purge alacritty
-}
-
-if [[ $DF_IS_HOMEBREW ]]; then
-  alacritty_brew_uninstall
-elif [[ $DF_IS_APT ]]; then
-  alacritty_apt_uninstall
 fi
