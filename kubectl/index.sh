@@ -40,12 +40,11 @@ hook_link() {
 
 hook_env() {
   envFile=$__dirname/env.zsh
-  [[ -f $envFile ]] && source "$envFile" "$__dirname" "$__home"
+  [[ -f $envFile ]] && source "$envFile"
 }
 
 hook_zsh() {
-  [[ -f "$__dirname/.zsh/aliases.zsh" ]] && source "$__dirname/.zsh/aliases.zsh" "$__dirname" "$__home"
-  [[ -f "$__dirname/.zsh/functions.zsh" ]] && source "$__dirname/.zsh/functions.zsh" "$__dirname" "$__home"
+  source "$__dirname/zsh.sh"
 }
 
 if [[ -n $action ]]; then

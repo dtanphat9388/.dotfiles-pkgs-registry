@@ -1,9 +1,18 @@
 #!/bin/bash
 
-#-- autocomplete. TIP: load in lazy load
-# [[ ! -s "$ZSH_COMPLETIONS_DIR/_kubectl" ]] && kubectl completion zsh >$ZSH_COMPLETIONS_DIR/_kubectl
+# -- ALIASES
 
-#-- functions
+alias k="kubectl"
+compdef k=kubectl
+
+# -- COMPLETIONS
+
+if [[ ! -s "$ZSH_COMPLETIONS_DIR/_kubectl" ]]; then
+  kubectl completion zsh >$ZSH_COMPLETIONS_DIR/_kubectl
+  source $ZSH_COMPLETIONS_DIR/_kubectl
+fi
+
+# -- FUNCTIONS
 
 kconf() {
   eval "$KUBE_EDITOR $KUBECONFIG"

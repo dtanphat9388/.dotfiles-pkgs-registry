@@ -1,5 +1,4 @@
 #!/bin/bash
-#shellcheck source=/dev/null
 
 __dirname=$(dirname "$0")
 __home="$DF_HOME"
@@ -29,28 +28,33 @@ hook_check() {
 }
 
 hook_install() {
-  installFile=$__dirname/install.sh
-  [[ -f $installFile ]] && bash "$installFile" "$__dirname"
+  local installFile=$__dirname/install.sh
+  [[ -f $installFile ]] && bash "$installFile"
 }
 
 hook_uninstall() {
-  uninstallFile=$__dirname/uninstall.sh
-  [[ -f $uninstallFile ]] && bash "$uninstallFile" "$__dirname"
+  local uninstallFile=$__dirname/uninstall.sh
+  [[ -f $uninstallFile ]] && bash "$uninstallFile"
 }
 
 hook_upgrade() {
-  upgradeFile=$__dirname/upgrade.sh
+  local upgradeFile=$__dirname/upgrade.sh
   [[ -f $upgradeFile ]] && bash "$upgradeFile"
 }
 
 hook_link() {
-  lnFile=$__dirname/ln.sh
-  [[ -f $lnFile ]] && bash "$lnFile" "$__dirname" "$__home"
+  local lnFile=$__dirname/ln.sh
+  [[ -f $lnFile ]] && bash "$lnFile"
 }
 
 hook_env() {
-  envFile=$__dirname/env.zsh
-  [[ -f $envFile ]] && source "$envFile" "$__dirname" "$__home"
+  local envFile=$__dirname/env.sh
+  [[ -f $envFile ]] && source "$envFile"
+}
+
+hook_zsh() {
+  local zshFile=$__dirname/zsh.sh
+  [[ -f $zshFile ]] && source "$zshFile"
 }
 
 if [[ -n $action ]]; then

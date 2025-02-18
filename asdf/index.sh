@@ -38,8 +38,8 @@ hook_link() {
 }
 
 hook_env() {
-  envFile=$__home/env.zsh
-  [[ -f $envFile ]] && source $envFile $__home $__data
+  envFile=$__home/env.sh
+  [[ -f $envFile ]] && source "$envFile"
 }
 
 hook_zsh() {
