@@ -1,5 +1,4 @@
 #!/bin/bash
-#shellcheck source=/dev/null
 
 __dirname=$(dirname "$0")
 __home="$DF_HOME"
@@ -19,13 +18,7 @@ hook_check() {
 }
 
 hook_dependencies() {
-  #   # style more
-  #   declare -a deps=("brew" "npm")
-  #   echo ${deps[@]}
-  #   # style little
-  #   echo "dep1"
-  #   echo "dep2"
-  return
+  echo brew
 }
 
 hook_install() {
@@ -45,25 +38,17 @@ hook_upgrade() {
 
 hook_link() {
   lnFile=$__dirname/ln.sh
-  [[ -f $lnFile ]] && bash "$lnFile" "$__dirname" "$__home"
+  [[ -f $lnFile ]] && bash "$lnFile"
 }
 
 hook_env() {
-  envFile=$__dirname/env.zsh
-  [[ -f $envFile ]] && source "$envFile" "$__dirname" "$__home"
+  envFile=$__dirname/env.sh
+  [[ -f $envFile ]] && source "$envFile"
 }
 
 hook_zsh() {
-  [[ -f "$__dirname/.zsh/aliases.zsh" ]] && source "$__dirname/.zsh/aliases.zsh" "$__dirname" "$__home"
-  [[ -f "$__dirname/.zsh/functions.zsh" ]] && source "$__dirname/.zsh/functions.zsh" "$__dirname" "$__home"
-  # -- note: place by order
-  # YOUR_COMMAND() {
-  #   unset -f $0
-  #   # $0 completion zsh (if have)
-  #   [[ -f "$__dirname/.zsh/aliases.zsh" ]] && source "$__dirname/.zsh/aliases.zsh" "$__dirname" "$__home"
-  #   [[ -f "$__dirname/.zsh/functions.zsh" ]] && source "$__dirname/.zsh/functions.zsh" "$__dirname" "$__home"
-  #   $0 "$@"
-  # }
+  zshFile=$__dirname/zsh.sh
+  [[ -f $zshFile ]] && source "$zshFile"
 }
 
 if [[ -n $action ]]; then

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
 #-- source exe file
 if [[ $DF_IS_LINUX ]]; then
   ASDF_EXE_PATH="$(brew --prefix asdf)/libexec/asdf.sh"
