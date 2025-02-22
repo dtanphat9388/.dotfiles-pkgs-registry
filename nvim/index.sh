@@ -20,12 +20,12 @@ hook_dependencies() {
 
 hook_install() {
   installFile=$__dirname/install.sh
-  [[ -f $installFile ]] && bash "$installFile" "$__dirname"
+  [[ -f $installFile ]] && bash "$installFile"
 }
 
 hook_uninstall() {
   uninstallFile=$__dirname/uninstall.sh
-  [[ -f $uninstallFile ]] && bash "$uninstallFile" "$__dirname"
+  [[ -f $uninstallFile ]] && bash "$uninstallFile"
 }
 
 hook_upgrade() {
@@ -35,17 +35,17 @@ hook_upgrade() {
 
 hook_link() {
   lnFile=$__dirname/ln.sh
-  [[ -f $lnFile ]] && bash "$lnFile" "$__dirname" "$__home"
+  [[ -f $lnFile ]] && bash "$lnFile"
 }
 
 hook_env() {
   envFile=$__dirname/env.zsh
-  [[ -f $envFile ]] && source "$envFile" "$__dirname" "$__home"
+  [[ -f $envFile ]] && source "$envFile"
 }
 
 hook_zsh() {
-  [[ -f "$__dirname/.zsh/aliases.zsh" ]] && source "$__dirname/.zsh/aliases.zsh" "$__dirname" "$__home"
-  [[ -f "$__dirname/.zsh/functions.zsh" ]] && source "$__dirname/.zsh/functions.zsh" "$__dirname" "$__home"
+  zshFile=$__dirname/zsh.sh
+  [[ -f $zshFile ]] && source "$zshFile"
 }
 
 if [[ -n $action ]]; then

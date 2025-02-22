@@ -78,12 +78,7 @@ vimns() {
 }
 
 .vim() {
-  _path=$DF_CONFIGS/nvim
-  if [[ $DF_IS_TERM_VSCODE ]]; then
-    code $_path
-  else
-    vim $_path
-  fi
+  vim $DF_CONFIGS/nvim
 }
 
 .nb() {
