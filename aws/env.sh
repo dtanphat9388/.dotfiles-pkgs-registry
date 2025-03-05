@@ -15,10 +15,10 @@ export AWS_SHARED_CREDENTIALS_FILE="$DF_HOME/.aws/credentials"
 # -- disable output pagination
 export AWS_PAGER=
 
-if [[ -f "$DF_CONFIGS/aws/env.zsh" ]]; then
-  source "$DF_CONFIGS/aws/env.zsh"
+if [[ -f "$DF_CONFIGS/aws/env.sh" ]]; then
+  source "$DF_CONFIGS/aws/env.sh"
 fi
 
-if [[ -f "$DF_HOME/aws/env.zsh" ]]; then
-  source "$DF_HOME/aws/env.zsh"
+if [[ -f "$DF_HOME/aws/env.sh" ]]; then
+  source "$DF_HOME/aws/env.sh"
 fi

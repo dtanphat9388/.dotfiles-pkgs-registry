@@ -11,10 +11,10 @@ fi
 
 export ASDF_CONFIG_FILE=$DF_CONFIGS/asdf/.asdfrc
 
-if [[ -f "$DF_CONFIGS/asdf/env.zsh" ]]; then
-  source "$DF_CONFIGS/asdf/env.zsh"
+if [[ -f "$DF_CONFIGS/asdf/env.sh" ]]; then
+  source "$DF_CONFIGS/asdf/env.sh"
 fi
 
-if [[ -f "$DF_HOME/asdf/env.zsh" ]]; then
-  source "$DF_HOME/asdf/env.zsh"
+if [[ -f "$DF_HOME/asdf/env.sh" ]]; then
+  source "$DF_HOME/asdf/env.sh"
 fi

@@ -16,10 +16,10 @@ export PG_COLOR="always"
 # export PG_COLORS="error=01;31:warning=01;35:note=01;36:locus=01"
 #
 #
-if [[ -f "$DF_CONFIGS/postgresql/env.zsh" ]]; then
-  source "$DF_CONFIGS/postgresql/env.zsh"
+if [[ -f "$DF_CONFIGS/postgresql/env.sh" ]]; then
+  source "$DF_CONFIGS/postgresql/env.sh"
 fi
 
-if [[ -f "$DF_HOME/postgresql/env.zsh" ]]; then
-  source "$DF_HOME/postgresql/env.zsh"
+if [[ -f "$DF_HOME/postgresql/env.sh" ]]; then
+  source "$DF_HOME/postgresql/env.sh"
 fi

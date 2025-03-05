@@ -2,7 +2,6 @@
 
 brew install ollama
 
-# install models
-# ollama pull llama3:70b
-# ollama pull codellama:70b
-# ollama pull deepseek-r1:1.5b
+echo "Commands is similarly to docker"
+# Example commands (auto pull and run model)
+# ollama run {model}:{version}
