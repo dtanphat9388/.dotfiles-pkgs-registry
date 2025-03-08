@@ -1,7 +1,0 @@
-tunnel: 5820f4a4-d164-4a74-872d-d7a4cbb11653
-credentials-file: /home/dtanphat9388/.cloudflared/5820f4a4-d164-4a74-872d-d7a4cbb11653.json
-
-ingress:
-  - hostname: home.dtanphat9388.blog
-    service: http://localhost:8080
-  - service: http_status:404

@@ -16,6 +16,7 @@ hook_check() {
 hook_install() {
   local installFile=$__dirname/install.sh
   [[ -f $installFile ]] && bash "$installFile"
+  hook_link
 }
 
 hook_uninstall() {
