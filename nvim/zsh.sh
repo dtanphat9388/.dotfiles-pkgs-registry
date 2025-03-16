@@ -1,4 +1,8 @@
 #!/bin/bash
+# Requirements
+# - tmux, fzf
+# - add following envs to .zshenv
+#   - VIM_WORKSPACE_NAME: will launch workspace in tmux session name
 
 compdef vi=nvim
 vi() {
@@ -7,14 +11,18 @@ vi() {
     return
   fi
   local target=$1
-  local _target_path=$(_vim_resolve_path $target)
-  local _status=$?
-  [[ -z $_target_path ]] && echo not found && return $_status
-  if [[ $VIM_WORKSPACE_STYLE == "window" ]]; then
-    _vimw "$_target_path"
+  echo $target
+  local target_path=$(_vim_resolve_path "$target")
+  [[ -z $target_path ]] && echo not found && return 127
+  local workspace_name=$([[ -d $target_path ]] && basename "$target_path" || dirname "$target_path")
+  local session_name="$VIM_WORKSPACE_NAME"
+  local nvim_server="/tmp/nvim-server-${workspace_name}.pipe"
+  if (tmux has-session -t "=$session_name"); then
+    tmux new-window -S -t "$session_name" -c "$target_path" -n "$workspace_name" nvim --listen "$nvim_server"
   else
-    _vims "$_target_path"
+    tmux new-session -d -s "$session_name" -c "$target_path" -n "$workspace_name" nvim --listen "$nvim_server"
   fi
+  tmux switch-client -t "$session_name"
 }
 
 # -- nvim profile switcher (https://gist.github.com/elijahmanor/b279553c0132bfad7eae23e34ceb593b)
@@ -40,13 +48,16 @@ vins() {
 .nb() {
   vi "$ZK_NOTEBOOK_DIR"
 }
+
+# -- Quick resolve recent path
 _vim_resolve_path() {
   local target=$1
   _realpath=$(realpath "$target")
   if [[ -e "$_realpath" ]]; then
     echo "$_realpath"
   else
-    _zpath=$(zshz -le "$target" | awk '{print $2}')
+    _zpath=$(zshz -e "$target" | awk '{print $2}')
+    # _zpath=$(zshz -le "$target" | awk '{print $2}')
     _numofzpath=$(echo "$_zpath" | wc -l)
     if [[ $_numofzpath -gt 1 ]]; then
       selected=$(echo "$_zpath" | fzf)
@@ -55,27 +66,4 @@ _vim_resolve_path() {
       echo "$_zpath"
     fi
   fi
-}
-
-_vims() {
-  local project_dir=$1
-  local project_name=$(basename $project_dir)
-  if ! _tmux_has_session_name $project_name; then
-    nvim_server="/tmp/nvim-server-${project_name}.pipe"
-    _tmux_create_session_template $project_name $nvim_server $target
-  fi
-  _tmux_switch_to_session "${proj_name}:vim"
-}
-
-_vimw() {
-  local target=$1
-  local target_name=$([[ -d $target ]] && basename "$target" || dirname "$target")
-  local session_name="$VIM_WORKSPACE_NAME"
-  local nvim_server="/tmp/nvim-server-${target_name}.pipe"
-  if (tmux has-session -t "=$session_name"); then
-    tmux new-window -S -t "$session_name" -c "$target" -n "$target_name" nvim --listen "$nvim_server"
-  else
-    tmux new-session -d -s "$session_name" -c "$target" -n "$target_name" nvim --listen "$nvim_server"
-  fi
-  tmux switch-client -t "$session_name"
 }

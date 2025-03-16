@@ -21,7 +21,7 @@ kconf() {
 _k_server_healthcheck() {
   local server
   server=$(kubectl config view --minify -o jsonpath='{.clusters[].cluster.server}')
-  curl --connect-timeout 0,3 -s -k "${server}/livez" >/dev/null
+  curl --connect-timeout 0.3 -s -k "${server}/livez" >/dev/null
   return $?
 }
 
