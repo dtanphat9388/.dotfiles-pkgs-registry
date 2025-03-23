@@ -56,7 +56,7 @@ _vim_resolve_path() {
   if [[ -e "$_realpath" ]]; then
     echo "$_realpath"
   else
-    _zpath=$(zshz -e "$target" | awk '{print $2}')
+    _zpath=$(zshz -e "$target")
     # _zpath=$(zshz -le "$target" | awk '{print $2}')
     _numofzpath=$(echo "$_zpath" | wc -l)
     if [[ $_numofzpath -gt 1 ]]; then

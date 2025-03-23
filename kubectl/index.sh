@@ -39,7 +39,7 @@ hook_link() {
 }
 
 hook_env() {
-  envFile=$__dirname/env.zsh
+  envFile=$__dirname/env.sh
   [[ -f $envFile ]] && source "$envFile"
 }
 

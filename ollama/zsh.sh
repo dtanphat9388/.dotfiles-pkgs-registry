@@ -2,8 +2,7 @@
 
 # -- ALIASES
 
-alias ai="ollama run llama3:70b"
-alias aic="ollama run codellama"
+alias .ai="ollama"
 
 # -- COMPLETIONS
 # if [[ ! -s "$ZSH_COMPLETIONS_DIR/_example" ]]; then
