@@ -13,7 +13,7 @@ hook_check() {
 }
 
 hook_dependencies() {
-  echo "brew"
+  echo "brew aws-vault"
 }
 
 hook_install() {
@@ -32,12 +32,13 @@ hook_link() {
 }
 
 hook_env() {
-  envFile=$__home/env.zsh
+  envFile=$__home/env.sh
   [[ -f $envFile ]] && source $envFile $__home
 }
 
 hook_zsh() {
-  source $__home/.zsh/functions.zsh
+  zshFile=$__home/zsh.sh
+  [[ -f $zshFile ]] && source $zshFile $__home
 }
 
 if [[ -n $action ]]; then

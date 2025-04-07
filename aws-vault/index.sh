@@ -6,11 +6,11 @@ __home="$DF_HOME"
 action=$1
 
 hook_info() {
-  echo your description here
+  echo Store AWS credentials securely
 }
 
 hook_check() {
-  command -v helm
+  command -v aws-vault
 }
 
 hook_install() {
