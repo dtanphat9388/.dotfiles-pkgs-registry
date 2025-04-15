@@ -6,15 +6,11 @@ __home="$DF_HOME"
 action=$1
 
 hook_info() {
-  echo deno - javascript runtime
+  echo rg command search pattern use in git
 }
 
 hook_check() {
-  command -v deno
-}
-
-hook_dependencies() {
-  echo "asdf"
+  command -v rg
 }
 
 hook_install() {

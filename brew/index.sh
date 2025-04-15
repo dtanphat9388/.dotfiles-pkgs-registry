@@ -10,7 +10,8 @@ hook_info() {
 }
 
 hook_dependencies() {
-  echo curl
+  return
+  # echo curl
 }
 
 hook_check() {

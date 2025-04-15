@@ -16,6 +16,7 @@ hook_check() {
 
 hook_dependencies() {
   echo asdf
+  echo golangci-lint
 }
 
 hook_install() {
@@ -39,13 +40,13 @@ hook_link() {
 }
 
 hook_env() {
-  envFile=$__dirname/env.zsh
+  envFile=$__dirname/env.sh
   [[ -f $envFile ]] && source "$envFile" "$__dirname" "$__home"
 }
 
 hook_zsh() {
-  [[ -f "$__dirname/.zsh/aliases.zsh" ]] && source "$__dirname/.zsh/aliases.zsh" "$__dirname" "$__home"
-  [[ -f "$__dirname/.zsh/functions.zsh" ]] && source "$__dirname/.zsh/functions.zsh" "$__dirname" "$__home"
+  zshFile=$__dirname/zsh.sh
+  [[ -f $zshFile ]] && source "$zshFile" "$__dirname" "$__home"
 }
 
 if [[ -n $action ]]; then

@@ -2,9 +2,10 @@
 
 # -- ALIASES
 
-alias llm="ollama"
+# alias k="v"
 
 # -- COMPLETIONS
+
 # if [[ ! -s "$ZSH_COMPLETIONS_DIR/_example" ]]; then
 #   example completions zsh >$ZSH_COMPLETIONS_DIR/_example
 #   source $ZSH_COMPLETIONS_DIR/_example

@@ -3,7 +3,7 @@
 neovim_brew() {
   brew install neovim
   brew install mercurial
-  brew install ripgrep
+  # brew install ripgrep
   brew install fswatch
   brew install luarocks
 }

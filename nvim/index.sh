@@ -15,7 +15,8 @@ hook_check() {
 }
 
 hook_dependencies() {
-  echo brew nodejs tmux
+  echo brew tmux deno
+  echo ripgrep # use by grep command in nvim
 }
 
 hook_install() {

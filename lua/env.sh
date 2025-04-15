@@ -1,5 +1,7 @@
 #!/bin/bash
 
+eval "$(luarocks path)"
+
 if [[ -f "$DF_CONFIGS/lua/env.sh" ]]; then
   source "$DF_CONFIGS/lua/env.sh"
 fi
