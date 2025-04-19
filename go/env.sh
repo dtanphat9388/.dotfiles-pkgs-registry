@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # commands which installed by go
-export PATH=$PATH:$(go env GOPATH)/bin
+export PATH=$PATH:$(go env GOPATH)
 
 if [[ -f "$DF_CONFIGS/go/env.sh" ]]; then
   source "$DF_CONFIGS/go/env.sh"
