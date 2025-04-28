@@ -1,3 +1,5 @@
 #!/bin/bash
 
-# ln -sfn $DF_CONFIGS/sample  $HOME
+if [[ -L $HOME/.config/espanso ]]; then
+  ln -sfn $DF_CONFIGS/espanso $HOME/.config
+fi

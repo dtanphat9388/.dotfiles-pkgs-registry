@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [[ ! -d $DF_CONFIGS/espanso ]]; then
+  mkdir -p $DF_CONFIGS/espanso
+  ln -sfn $DF_CONFIGS/espanso $HOME/.config
+fi
+
 app_brew() {
   if [[ $DF_IS_ARCH_INTEL ]]; then
     brew install espanso
@@ -15,7 +20,10 @@ app_apt() {
   chmod u+x ~/opt/Espanso.AppImage
   # Create the "espanso" command alias
   sudo ~/opt/Espanso.AppImage env-path register
+  # create espanso service to auto run on next reboot
   espanso service register
+  # start now
+  espanso service start
 }
 
 if [[ $DF_IS_MACOS ]]; then
