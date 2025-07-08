@@ -5,6 +5,7 @@
 #   - VIM_WORKSPACE_NAME: will launch workspace in tmux session name
 
 compdef vi=nvim
+
 vi() {
   if [[ ! $TERM_PROGRAM == 'tmux' ]]; then
     nvim "$@"
@@ -39,14 +40,6 @@ vins() {
   rm "$HOME/.config/nvim"
   rm -rf "$HOME/.local/share/nvim"
   ln -sf $(realpath $DF_CONFIGS/$profile) $HOME/.config/nvim
-}
-
-.vi() {
-  vi $DF_CONFIGS/nvim
-}
-
-.nb() {
-  vi "$ZK_NOTEBOOK_DIR"
 }
 
 # -- Quick resolve recent path
