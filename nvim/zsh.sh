@@ -4,18 +4,37 @@
 # - add following envs to .zshenv
 #   - VIM_WORKSPACE_NAME: will launch workspace in tmux session name
 
-compdef vi=nvim
+# -- Quick resolve recent path
+_vim_resolve_path() {
+  local target=$1
+  _realpath=$(realpath "$target")
+  if [[ -e "$_realpath" ]]; then
+    echo "$_realpath"
+  else
+    _zpath=$(zshz -e "$target")
+    # _zpath=$(zshz -le "$target" | awk '{print $2}')
+    _numofzpath=$(echo "$_zpath" | wc -l)
+    if [[ $_numofzpath -gt 1 ]]; then
+      selected=$(echo "$_zpath" | fzf)
+      echo "$selected"
+    else
+      echo "$_zpath"
+    fi
+  fi
+}
 
+compdef vi=nvim
 vi() {
   if [[ ! $TERM_PROGRAM == 'tmux' ]]; then
     nvim "$@"
     return
   fi
+  # resolve paths
   local target=$1
-  echo $target
   local target_path=$(_vim_resolve_path "$target")
   [[ -z $target_path ]] && echo not found && return 127
   local workspace_name=$([[ -d $target_path ]] && basename "$target_path" || dirname "$target_path")
+  # prepare tmux environment
   local session_name="$VIM_WORKSPACE_NAME"
   local nvim_server="/tmp/nvim-server-${workspace_name}.pipe"
   if (tmux has-session -t "=$session_name"); then
@@ -40,23 +59,4 @@ vins() {
   rm "$HOME/.config/nvim"
   rm -rf "$HOME/.local/share/nvim"
   ln -sf $(realpath $DF_CONFIGS/$profile) $HOME/.config/nvim
-}
-
-# -- Quick resolve recent path
-_vim_resolve_path() {
-  local target=$1
-  _realpath=$(realpath "$target")
-  if [[ -e "$_realpath" ]]; then
-    echo "$_realpath"
-  else
-    _zpath=$(zshz -e "$target")
-    # _zpath=$(zshz -le "$target" | awk '{print $2}')
-    _numofzpath=$(echo "$_zpath" | wc -l)
-    if [[ $_numofzpath -gt 1 ]]; then
-      selected=$(echo "$_zpath" | fzf)
-      echo "$selected"
-    else
-      echo "$_zpath"
-    fi
-  fi
 }
