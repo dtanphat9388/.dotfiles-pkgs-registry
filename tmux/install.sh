@@ -1,6 +1,10 @@
 #!/bin/bash
 
-brew install tmux
+if [[$IS_NIX]]; then
+  nix profile install nixpkgs#tmux
+else
+  brew install tmux
+fi
 if [[ $DF_IS_LINUX ]]; then
   # as pbcopy in macos
   sudo apt-get install -y xsel
